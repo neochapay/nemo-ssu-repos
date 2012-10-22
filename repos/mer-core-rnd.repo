@@ -1,0 +1,14 @@
+[mer-core-rnd]
+name=mer-core-rnd
+enabled=1
+autorefresh=0
+baseurl=plugin:ssu?rnd&repo=mer-core
+type=rpm-md
+gpgcheck=0
+[mer-core-rnd-debuginfo]
+name=mer-core-rnd-debuginfo
+enabled=0
+autorefresh=0
+baseurl=plugin:ssu?rnd&repo=mer-core&debug
+type=NONE
+gpgcheck=0
