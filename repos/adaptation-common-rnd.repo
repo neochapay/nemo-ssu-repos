@@ -1,0 +1,7 @@
+[adaptation-common-rnd]
+name=adaptation-common-rnd
+failovermethod=priority
+baseurl=plugin:ssu?rnd&repo=adaptation-common
+type=rpm-md
+gpgcheck=0
+enabled=1

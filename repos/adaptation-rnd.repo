@@ -4,12 +4,4 @@ failovermethod=priority
 baseurl=plugin:ssu?rnd&repo=adaptation
 type=rpm-md
 gpgcheck=0
-enabled=0
-
-[adaptation-common-main]
-name=adaptation-common-main
-failovermethod=priority
-baseurl=plugin:ssu?rnd&repo=adaptation-common-main
-type=rpm-md
-gpgcheck=0
-enabled=0
+enabled=1
