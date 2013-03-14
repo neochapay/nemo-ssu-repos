@@ -122,8 +122,7 @@ adaptation repository.
 
 
 %prep
-%setup -q
-
+%setup -q -n %{name}-%{version}
 
 %build
 qmake DEFINES+='TARGET_ARCH=\\\"\"%{_target_cpu}\"\\\"' -recursive
