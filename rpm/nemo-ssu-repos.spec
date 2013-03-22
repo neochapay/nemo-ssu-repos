@@ -9,6 +9,8 @@ License: GPLv2
 Source0: %{name}-%{version}.tar.gz
 BuildRequires: pkgconfig(QtCore)
 
+%define ssu_requirement ssu >= 0.25
+
 %description
 %{summary}.
 
@@ -16,7 +18,7 @@ BuildRequires: pkgconfig(QtCore)
 %package -n ssu-vendor-data-nemo
 Summary: Sample vendor configuration data
 Group: System/Base
-Requires: ssu
+Requires: %{ssu_requirement}
 Provides: ssu-vendor-data
 
 %description -n ssu-vendor-data-nemo
@@ -31,7 +33,7 @@ Provides: ssu-vendor-data
 %package release
 Summary: Release repositories
 Group: System/Base
-Requires: ssu
+Requires: %{ssu_requirement}
 
 %description release
 %{summary}.
@@ -44,7 +46,7 @@ Requires: ssu
 %package adaptation-release
 Summary: Adaptation repositories
 Group: System/Base
-Requires: ssu
+Requires: %{ssu_requirement}
 
 %description adaptation-release
 This package provides device-specific adaptation for any
@@ -62,7 +64,7 @@ repositories. The repositories here are disabled per default.
 %package adaptation-common-release
 Summary: Common adaptation repositories
 Group: System/Base
-Requires: ssu
+Requires: %{ssu_requirement}
 
 %description adaptation-common-release
 This package provides common adaptation repositories for
@@ -77,7 +79,7 @@ adaptation repository.
 %package rnd
 Summary: RND repositories
 Group: System/Base
-Requires: ssu
+Requires: %{ssu_requirement}
 
 %description rnd
 %{summary}.
@@ -91,7 +93,7 @@ Requires: ssu
 %package adaptation-rnd
 Summary: RND adaptation repositories, device specific
 Group: System/Base
-Requires: ssu
+Requires: %{ssu_requirement}
 
 %description adaptation-rnd
 This package provides device-specific adaptation for any
@@ -109,7 +111,7 @@ repositories.
 %package adaptation-common-rnd
 Summary: Common adaptation repositories
 Group: System/Base
-Requires: ssu
+Requires: %{ssu_requirement}
 
 %description adaptation-common-rnd
 This package provides common adaptation repositories for
@@ -131,7 +133,7 @@ make %{?_smp_mflags}
 
 %install
 make INSTALL_ROOT=%{buildroot} install
-RND_REPOS="nemo mer-core adaptation adaptation-common"; \
+RND_REPOS="mer-core adaptation adaptation-common"; \
 for REPO in $RND_REPOS; do
     sed -r 's/-rnd/-release/;s/\?rnd&?/?/;s/\?$//' %{buildroot}/%{_sysconfdir}/zypp/repos.d/$REPO-rnd.repo \
         > %{buildroot}/%{_sysconfdir}/zypp/repos.d/$REPO-release.repo
