@@ -43,6 +43,21 @@ Requires: %{ssu_requirement}
 %config %{_sysconfdir}/zypp/repos.d/mer-core-release.repo
 %config %{_sysconfdir}/zypp/repos.d/nemo-release.repo
 
+
+%package mer-tools-release
+Summary: Release repos for Mer tools
+Group: System/Base
+Requires: %{ssu_requirement}
+
+%description mer-tools-release
+%{summary}.
+
+%files mer-tools-release
+%defattr(-,root,root,-)
+%config %{_sysconfdir}/zypp/repos.d/mer-tools-release.repo
+
+
+
 %package adaptation-release
 Summary: Adaptation repositories
 Group: System/Base
@@ -89,6 +104,18 @@ Requires: %{ssu_requirement}
 %config %{_sysconfdir}/zypp/repos.d/mer-core-rnd.repo
 %config %{_sysconfdir}/zypp/repos.d/nemo-rnd.repo
 
+%package mer-tools-rnd
+Summary: Mer tools rnd repositories
+Group: System/Base
+Requires: %{ssu_requirement}
+
+%description mer-tools-rnd
+%{summary}.
+
+%files mer-tools-rnd
+%defattr(-,root,root,-)
+%config %{_sysconfdir}/zypp/repos.d/mer-tools-rnd.repo
+
 
 %package adaptation-rnd
 Summary: RND adaptation repositories, device specific
@@ -133,7 +160,7 @@ make %{?_smp_mflags}
 
 %install
 make INSTALL_ROOT=%{buildroot} install
-RND_REPOS="mer-core adaptation adaptation-common"; \
+RND_REPOS="mer-core mer-tools adaptation adaptation-common"; \
 for REPO in $RND_REPOS; do
     sed -r 's/-rnd/-release/;s/\?rnd&?/?/;s/\?$//' %{buildroot}/%{_sysconfdir}/zypp/repos.d/$REPO-rnd.repo \
         > %{buildroot}/%{_sysconfdir}/zypp/repos.d/$REPO-release.repo
