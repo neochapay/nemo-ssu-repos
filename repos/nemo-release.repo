@@ -1,8 +1,0 @@
-[nemo-platform]
-name=nemo-platform
-failovermethod=priority
-baseurl=plugin:ssu?repo=nemo-platform
-type=rpm-md
-gpgcheck=0
-enabled=1
-

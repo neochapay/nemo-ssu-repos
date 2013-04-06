@@ -1,7 +1,0 @@
-[adaptation-rnd]
-name=adaptation-rnd
-failovermethod=priority
-baseurl=plugin:ssu?rnd&repo=adaptation
-type=rpm-md
-gpgcheck=0
-enabled=1

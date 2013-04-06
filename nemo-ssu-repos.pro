@@ -3,4 +3,4 @@ contains(QT_VERSION, ^4\.[0-7]\..*) {
 }
 
 TEMPLATE = subdirs
-SUBDIRS = repos ssu
+SUBDIRS = ssu
