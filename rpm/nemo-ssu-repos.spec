@@ -8,6 +8,7 @@ BuildArch: noarch
 License: GPLv2
 Source0: %{name}-%{version}.tar.gz
 BuildRequires: pkgconfig(QtCore)
+BuildRequires: oneshot
 
 %description
 %{summary}.
@@ -25,6 +26,7 @@ Obsoletes: nemo-ssu-repos-rnd
 Obsoletes: nemo-ssu-repos-mer-tools-rnd
 Obsoletes: nemo-ssu-repos-adaptation-rnd
 Obsoletes: nemo-ssu-repos-adaptation-common-rnd
+Requires: oneshot
 %{_oneshot_requires_post}
 
 %description -n ssu-vendor-data-nemo
