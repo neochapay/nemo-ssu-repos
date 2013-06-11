@@ -25,6 +25,7 @@ Obsoletes: nemo-ssu-repos-rnd
 Obsoletes: nemo-ssu-repos-mer-tools-rnd
 Obsoletes: nemo-ssu-repos-adaptation-rnd
 Obsoletes: nemo-ssu-repos-adaptation-common-rnd
+%{_oneshot_requires_post}
 
 %description -n ssu-vendor-data-nemo
 %{summary}. A vendor (including Nemo) is supposed to put those configuration on device.
@@ -33,6 +34,9 @@ Obsoletes: nemo-ssu-repos-adaptation-common-rnd
 %defattr(-,root,root,-)
 %attr(0664, root, ssu) %config(noreplace) %{_sysconfdir}/ssu/ssu.ini
 %{_datadir}/ssu/*.ini
+
+%post -n ssu-vendor-data-nemo
+%{_bindir}/add-oneshot --now ssu-update-repos
 
 %prep
 %setup -q -n %{name}-%{version}
