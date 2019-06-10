@@ -18,6 +18,7 @@ Requires: ssu >= 0.31
 Requires: oneshot
 
 Provides: ssu-vendor-data
+Provides: ssu-kickstart-configuration-jolla
 
 Obsoletes: nemo-ssu-repos-release
 Obsoletes: nemo-ssu-repos-mer-tools-release
