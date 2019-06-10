@@ -7,8 +7,6 @@ Group: System/Base
 BuildArch: noarch
 License: GPLv2
 Source0: %{name}-%{version}.tar.gz
-BuildRequires: pkgconfig(QtCore)
-BuildRequires: oneshot
 
 %description
 %{summary}.
@@ -17,7 +15,10 @@ BuildRequires: oneshot
 Summary: Sample vendor configuration data
 Group: System/Base
 Requires: ssu >= 0.31
+Requires: oneshot
+
 Provides: ssu-vendor-data
+
 Obsoletes: nemo-ssu-repos-release
 Obsoletes: nemo-ssu-repos-mer-tools-release
 Obsoletes: nemo-ssu-repos-adaptation-release
@@ -26,8 +27,6 @@ Obsoletes: nemo-ssu-repos-rnd
 Obsoletes: nemo-ssu-repos-mer-tools-rnd
 Obsoletes: nemo-ssu-repos-adaptation-rnd
 Obsoletes: nemo-ssu-repos-adaptation-common-rnd
-Requires: oneshot
-%{_oneshot_requires_post}
 
 %description -n ssu-vendor-data-nemo
 %{summary}. A vendor (including Nemo) is supposed to put those configuration on device.
@@ -44,9 +43,11 @@ Requires: oneshot
 %setup -q -n %{name}-%{version}
 
 %build
-qmake DEFINES+='TARGET_ARCH=\\\"\"%{_target_cpu}\"\\\"' -recursive
-make %{?_smp_mflags}
+mkdir -p $RPM_BUILD_ROOT
 
 %install
-make INSTALL_ROOT=%{buildroot} install
+install -D -m 644 ssu/ssu.ini $RPM_BUILD_ROOT%{_sysconfdir}/ssu/ssu.ini
+install -D -m 644 ssu/repos.ini $RPM_BUILD_ROOT%{_datadir}/ssu/repos.ini
+install -D -m 644 ssu/ssu-defaults.ini $RPM_BUILD_ROOT%{_datadir}/ssu/ssu-defaults.ini
+install -D -m 644 ssu/board-mappings.ini $RPM_BUILD_ROOT%{_datadir}/ssu/board-mappings.ini
 
